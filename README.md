@@ -167,13 +167,6 @@ Some features depend on services that are not part of this repository:
 
 Without these integrations, the core Spring Boot app still runs, but semantic recommendation features will be limited.
 
-## What Makes This Project CV-Relevant
-
-- It solves a concrete problem, not just a demo CRUD flow
-- It combines backend engineering, AI integration, OCR, search, and business logic
-- It includes authentication, persistence, scheduling, external service orchestration, and automated tests
-- It demonstrates product thinking through the smart basket optimization use case
-
 ## Future Improvements
 
 - Replace hardcoded UI styling with a dedicated frontend design system
