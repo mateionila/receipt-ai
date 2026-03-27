@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanare - ReceiptAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<nav class="nav nav-pills nav-fill mb-4">
+    <a class="nav-link active" href="/scan">Scanare</a>
+    <a class="nav-link" href="/history">Istoric</a>
+    <a class="nav-link" href="/smart-basket">Smart Basket</a>
+    <a class="nav-link text-danger" href="/logout">Logout</a>
+</nav>
+
+<div class="card p-4 shadow-sm">
+    <h2 class="text-center mb-4">Încarcă un Bon Nou</h2>
+
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <form method="POST" action="/scan" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">Alege poza bonului:</label>
+            <input class="form-control" type="file" name="file" accept="image/*" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Proceseaza bonul</button>
+    </form>
+
+    <div th:if="${receipt}" class="mt-4">
+        <h4>Rezultat:</h4>
+        <ul class="list-group">
+            <li class="list-group-item">Magazin: <b th:text="${receipt.storeName}"></b></li>
+            <li class="list-group-item">Total: <b th:text="${receipt.total}"></b> RON</li>
+            <li class="list-group-item">Data: <span th:text="${receipt.date}"></span></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

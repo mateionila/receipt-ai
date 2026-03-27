@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Istoric - ReceiptAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<nav class="nav nav-pills nav-fill mb-4">
+    <a class="nav-link" href="/scan">Scanare</a>
+    <a class="nav-link active" href="/history">Istoric</a>
+    <a class="nav-link" href="/smart-basket">Smart Basket</a>
+    <a class="nav-link text-danger" href="/logout">Logout</a>
+</nav>
+
+<h2>Istoricul Bonurilor Tale</h2>
+
+<table class="table table-striped mt-3">
+    <thead class="table-dark">
+    <tr>
+        <th>Data</th>
+        <th>Magazin</th>
+        <th>Total (RON)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${receipts}">
+        <td th:text="${r.date}"></td>
+        <td th:text="${r.merchantName}"></td>
+        <td th:text="${r.total}"></td>
+    </tr>
+    <tr th:if="${receipts.empty}">
+        <td colspan="3" class="text-center">Nu ai scanat niciun bon încă.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
